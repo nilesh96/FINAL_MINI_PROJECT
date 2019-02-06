@@ -1,0 +1,3 @@
+Temperature=132.8f		AC=warm
+Temperature=86f		AC=Medium
+Temperature=122f		AC=warm
