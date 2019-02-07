@@ -5,47 +5,47 @@
 #include<vector>
 #include<algorithm>
 using namespace std;
-/*Paramitrized constructor and initialize the id*/
-CTempmoniter:: CTempmoniter(int temp_id)
+/*Paramitrized constructor and initialize the nId*/
+CTempmoniter:: CTempmoniter(int temp_nId)
 {
-	id = temp_id;
+	nId = temp_nId;
 }
-/* converting the data from c to f and f to c*/
-void CTempmoniter :: convert()
+/* Moniter_Converting the data from c to f and f to c*/
+void CTempmoniter :: Moniter_Convert()
 {
-	if(temp_state =='c'||temp_state == 'C')
+	if(m_szState =='c'||m_szState == 'C')
 	{
-		value = (value * 1.8) + 32;
-		temp_state = 'f';
+		m_fValue = (m_fValue * 1.8) + 32;
+		m_szState = 'f';
 	}
-	else if(temp_state == 'f' || temp_state == 'F')
+	else if(m_szState == 'f' || m_szState == 'F')
 	{
-		value =((value-32) / 1.8 );
-		temp_state = 'c';
+		m_fValue =((m_fValue-32) / 1.8 );
+		m_szState = 'c';
 	}
 	else
 	{
-		cout << "state is invalid" << endl;
+		cout << "state is invalnId" << endl;
 	}
 
-         Cmaincontroller objController( value, temp_state );
-	 objController.Tempwrite();
+         CMainController objController( m_fValue, m_szState );
+	 objController.Controller_Tempwrite();
 	
 }
-/* Thread function that is joined from the update function*/
+/* Thread function that is joined from the Moniter_Update function*/
 void*  CTempmoniter::Thread(void *p)
 {
 	CTempmoniter *ptr = static_cast< CTempmoniter *> (p);
 	//cout << "in temperature thread function " <<endl;
-	ptr->convert();
+	ptr->Moniter_Convert();
 	return nullptr;
 }
-/* override function defination and data is updated from the Ctempsensor class */
-void CTempmoniter::update(float temp,char state)
+/* override function defination and data is Moniter_Updated from the Ctempsensor class */
+void CTempmoniter::Moniter_Update(float temp,char state)
 {
-	value = temp;
-	temp_state = state;
-	cout << "tempmoniter class client id= " << id<< endl;
+	m_fValue = temp;
+	m_szState = state;
+	cout << "tempmoniter class client nId= " << nId<< endl;
 	cout << temp << " " << state << endl;
 	pthread_t th;
 	pthread_create(&th,NULL,Thread,(void *)this);

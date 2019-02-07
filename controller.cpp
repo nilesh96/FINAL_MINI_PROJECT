@@ -1,27 +1,41 @@
+/*************Start*******************************
+ * Author : Nilesh kumar
+ * File   : controller.cpp
+ * Date   : 04/02/2019
+**************************************************/
+
 #include"controller.h"
 #include<iostream>
 #include<fstream>
 #include<cstring>
 using namespace std;
-Cmaincontroller::Cmaincontroller(string st)
+
+/* Paramitrized constuctor for initialize the object to the string */
+CMainController::CMainController(string strVal)
 {
-	ac_state = st;
+    m_strAc_state = strVal;
 }
-Cmaincontroller::Cmaincontroller(float temp,char state)
-	{
-		temperature = temp;
-		change_state =state;
-	}
-void Cmaincontroller::Tempwrite(void)
+
+/* paramitrized constructor for initialize the object to the m_fTemperature and state */
+CMainController::CMainController(float Temp,char State)
 {
-	ofstream output("simulate.txt",ios::out |ios::app);
-	output << "Temperature=" << temperature<< change_state<< "\t\t";
-        output.close();
+    m_fTemperature = Temp;
+    m_Change_State = State;
 }
-void Cmaincontroller::Acwrite(void)
+
+/* Function for writing the data into file . Data is sending by the Tempmoniter class */
+void CMainController::Controller_Tempwrite( void )
 {
-	ofstream output("simulate.txt",ios::out |ios::app);
-	output << "AC=" << ac_state <<"\n";
-        output.close();
+    ofstream output ("simulate.txt", ios::out | ios::app );
+    output << "Temperature=" << m_fTemperature<< m_Change_State << "\t\t";
+    output.close();
+}
+
+/* function for writing the Acmoniter class data inside the  file . */ 
+void CMainController::Controller_Acwrite( void )
+{
+    ofstream output( "simulate.txt" , ios::out | ios::app );
+    output << "AC=" << m_strAc_state << "\n";
+    output.close();
 }
 

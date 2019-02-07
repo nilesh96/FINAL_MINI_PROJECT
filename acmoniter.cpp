@@ -1,3 +1,9 @@
+/*************Start*******************************
+ * Author : Nilesh kumar
+ * File   : acmoniter.cpp
+ * Date   : 01/02/2019
+*************End**********************************/
+
 #include"acmoniter.h"
 #include"controller.h"
 #include<iostream>
@@ -5,28 +11,29 @@
 #include<string>
 using namespace std;
 
-CAcmoniter::CAcmoniter(int temp)
-   {
-   	   id = temp;
-   }
-   
-void CAcmoniter:: check()
+/*paramitrized constructor to initialize the client id */
+CAcmoniter::CAcmoniter(int nTemp)
+{
+    m_nId = nTemp;
+}
+/*function for the checking the status of AC  */ 
+void CAcmoniter:: Moniter_Check()
 {
     string str;
-    if(temp_state=='c' || temp_state == 'C')
+    if(m_szState=='c' || m_szState == 'C')
 	{
-	  if(value > 40)
+	  if(m_fValue > 40)
 	      str = "warm";
-	  else if(value >=20 && value <=40)
+	  else if(m_fValue >=20 && m_fValue <=40)
 	      str = "Medium";
 	  else
 	      str="cool";
 	} 
-    else if(temp_state == 'f' || temp_state == 'F')
+    else if(m_szState == 'f' || m_szState == 'F')
 	{
-	  if(value >104)
+	  if(m_fValue >104)
 		str= "warm";
-	  else if(value >= 68 && value <= 104  ) 
+	  else if(m_fValue >= 68 && m_fValue <= 104  ) 
 		str="medium";
 	  else
 		str = "cool";
@@ -36,26 +43,26 @@ void CAcmoniter:: check()
 		cout << "state is invalid " << endl;
 	}
 
-	Cmaincontroller objController(str);
-
-	objController.Acwrite();
+    CMainController objController(str);
+    objController.Controller_Acwrite();
 }	
-void * CAcmoniter::Thread2(void *p)
+
+/*Thread function  */
+void * CAcmoniter::Moniter_Thread( void *p )
 {
-	CAcmoniter *ptr = static_cast<CAcmoniter *> (p);
-//	cout << "in ac moniter thread " << endl;
-	ptr->check();
-	return nullptr;
+    CAcmoniter *ptr = static_cast< CAcmoniter * > (p);
+    ptr->Moniter_Check();
+    return nullptr;
 }
-void CAcmoniter:: update(float temp , char state)
+
+void CAcmoniter:: Moniter_Update(float temp , char state)
 {
-	cout << "In acmoniter class client id =" << id << endl;
-	cout <<temp <<" "<< state << endl; 
-	value = temp;
-	temp_state = state;
-//	cout << temp << " " << state << endl;
-	pthread_t th;
-	pthread_create( &th , NULL , Thread2 , (void *)this);
-	pthread_join( th , NULL );
+    cout << "In acmoniter class client m_nId =" << m_nId << endl;
+    cout <<temp <<" "<< state << endl; 
+    m_fValue = temp;
+    m_szState = state;
+    pthread_t th;
+    pthread_create( &th , NULL , Moniter_Thread , (void *)this);
+    pthread_join( th , NULL );
 
 }

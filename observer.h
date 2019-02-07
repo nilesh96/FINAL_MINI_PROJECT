@@ -1,11 +1,17 @@
-#ifndef OBSERVER_H
-#define OBSERVER_H
-class Iobserver
+/*************Start*******************************
+ * Author : Nilesh kumar
+ * File   : observer.h
+ * Date   : 30/01/2019
+**************************************************/
+#ifndef __OBSERVER_H__
+#define __OBSERVER_H__
+
+class IObserver
 {
    public:
-        Iobserver()  {  }
-	virtual ~ Iobserver() {  }
-	virtual void update (float ,char) = 0;
+        IObserver()  {  }
+	virtual ~ IObserver() {  }
+	virtual void Moniter_Update ( float ,char ) = 0;
 
 };
-#endif
+#endif//__OBSERVER_H__

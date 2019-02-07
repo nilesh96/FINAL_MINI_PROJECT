@@ -1,6 +1,11 @@
+/**************************Start*********************************
+ * Author - Nilesh kumar
+ * Date - 02/02/2019
+ * File- Temperature.cpp
+****************************************************************/
+
 #include"tempsensor.h"
 #include<algorithm>
-
 /*getting all the data from the file and store in the vector*/
 void CTempSensor :: Temp_Get_Data()
 {
@@ -20,14 +25,15 @@ void CTempSensor :: Temp_Get_Data()
      {
        ssDivide.clear();
        ssDivide.str(strLine);
-       string str1,str2;
-          while( getline(ssDivide,str1,':') && getline(ssDivide,str2) )
+       string strOne,strTwo;
+          while( getline( ssDivide , strOne , ':' ) && getline( ssDivide , strTwo ) )
            {
-	     float m_fTemp = stof(str1);
-	     char m_cState = str2[0];
-	     m_vect.push_back( make_pair(m_fTemp,m_cState) );
+	     float m_fTemp = stof(strOne);
+	     char m_cState = strTwo[0];
+	     m_vect.push_back( make_pair ( m_fTemp , m_cState ) );
             }
-       } 
+       }
+    cout << "Data is successfully copied in the data member" << endl; 
     InStream.close();
 }
 
@@ -37,40 +43,41 @@ void CTempSensor :: Temp_Display_Data( void )
     cout << "data of vector" << endl;
     for( unsigned int nVar = 0; nVar < m_vect.size() ; nVar++ )
     {
-	    cout << m_vect[nVar].first << " " << m_vect[nVar].second << endl;
+      cout << m_vect[nVar].first << " " << m_vect[nVar].second << endl;
     }
 }
 
 /* Attach the observer and store in the vector*/
-int CTempSensor:: Temp_Attach(Iobserver * pIobsAttach)
+int CTempSensor:: Temp_Attach(IObserver * pIobsAttach)
 {
     m_observers.push_back(pIobsAttach);
     return 0;
 }
 
 /*To remove the observer first find the observer and then erase it*/
-void CTempSensor:: Temp_Detach(Iobserver *obs)
+void CTempSensor:: Temp_Detach(IObserver *observer)
 {
-        auto itr = find(m_observers.begin(),m_observers.end(),obs);
+    auto itr = find(m_observers.begin(),m_observers.end(),observer);
 
-	if(itr != m_observers.end())
-	{
-          m_observers.erase(itr);
-	}
+    if(itr != m_observers.end())
+    {
+      m_observers.erase(itr);
+    }
 
 }
 
 /*Notify to all the observer for temperature data*/
-void CTempSensor::Temp_Notify(void)
+void CTempSensor :: Temp_Notify( void )
 {
-    for(Iobserver  *obs : m_observers)
+    for(IObserver  *observer : m_observers)
     {
-	  obs->update(m_fTemp,m_cState);
+       observer->Moniter_Update(m_fTemp,m_cState);
+	  
     }
 }
 
 /* After getting data from the file and update the data one by one */
-void CTempSensor::Temp_Set_Data(void)
+void CTempSensor::Temp_Set_Data( void )
 {
     for(unsigned int  i = 0; i < m_vect.size() ; i++)
      { 

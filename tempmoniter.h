@@ -1,23 +1,29 @@
-#ifndef tempmoniter_h
-#define tempmoniter_h
+/*************Start*******************************
+ * Author : Nilesh kumar
+ * File   : tempmoniter.h
+ * Date   : 31/01/2019
+**************************************************/
+#ifndef __TEMPMONITER_H__
+#define __TEMPMONITER_H__
 #include"observer.h"
 #include<vector>
 #include<iostream>
 #include<algorithm>
-class CTempmoniter:public Iobserver
+
+class CTempmoniter:public IObserver
 {
-	float value;
-	char temp_state;
-	int id;
+	float m_fValue;
+	char m_szState;
+	int nId;
   public:
 	  
      //vector<pair<float ,char>> v1;
         CTempmoniter() = default;       	
 	CTempmoniter(int );
-	void convert();
+	void Moniter_Convert();
 	static void* Thread(void *);
-	void update(float,char)override;
+	void Moniter_Update(float,char)override;
 		
         	
 };
-#endif
+#endif//__TEMPMONITER_H__
