@@ -5,23 +5,23 @@
 using namespace std;
 int main()
 {
-    CTempSensor *ptr;
+    CTempSensor *pcTemp;
 
-    CAcmoniter *Acsub;
-    Acsub = new CAcmoniter(2);
+    CAcmoniter *pcAcsub;
+    pcAcsub = new CAcmoniter(2);
 
-    CTempmoniter *Tempsub;
-    Tempsub = new CTempmoniter(1);
+    CTempmoniter *pcTempsub;
+    pcTempsub = new CTempmoniter(1);
 
-    ptr= new CTempSensor();
-    ptr->Temp_Get_Data();
-//  ptr->display_data();
+    pcTemp= new CTempSensor();
+    pcTemp->Temp_Get_Data();
+//  pcTemp->display_data();
    
-    ptr->Temp_Attach(Tempsub);
-    ptr->Temp_Attach(Acsub);
-    ptr->Temp_Set_Data();
-    delete Tempsub;
-    delete Acsub;
-    delete ptr;
+    pcTemp->Temp_Attach(pcTempsub);
+    pcTemp->Temp_Attach(pcAcsub);
+    pcTemp->Temp_Set_Data();
+    delete pcTempsub;
+    delete pcAcsub;
+    delete pcTemp;
     return 0;
 }

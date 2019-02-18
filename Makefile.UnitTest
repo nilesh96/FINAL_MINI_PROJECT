@@ -23,8 +23,8 @@ LIBS=	-lgtest \
 	-lpthread
 
 SOURCES=./gtest_main.cpp \
-		./tempsensor.cpp  ./acmoniter.cpp ./controller.cpp ./tempmoniter.cpp \
-		./TestClass.cpp \
+		./tempsensor.cpp  ./acmoniter.cpp ./controller.cpp ./tempmoniter.cpp ./TestSensor.cpp 
+		
 			
 OBJECTS:= $(SOURCES:%.cpp=$(OBJDIR)/%.o)
 

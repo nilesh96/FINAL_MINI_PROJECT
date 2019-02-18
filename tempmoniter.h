@@ -20,7 +20,8 @@ class CTempmoniter:public IObserver
      //vector<pair<float ,char>> v1;
         CTempmoniter() = default;       	
 	CTempmoniter(int );
-	void Moniter_Convert();
+	CTempmoniter(float,char,int);
+	float Moniter_Convert();
 	static void* Thread(void *);
 	void Moniter_Update(float,char)override;
 		

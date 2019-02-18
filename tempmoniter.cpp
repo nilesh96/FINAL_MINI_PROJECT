@@ -10,8 +10,14 @@ CTempmoniter:: CTempmoniter(int temp_nId)
 {
 	nId = temp_nId;
 }
+
+CTempmoniter:: CTempmoniter(float val,char ch,int temp_nId)
+{       m_fValue = val;
+	m_szState = ch; 
+	nId = temp_nId;
+}
 /* Moniter_Converting the data from c to f and f to c*/
-void CTempmoniter :: Moniter_Convert()
+float CTempmoniter :: Moniter_Convert()
 {
 	if(m_szState =='c'||m_szState == 'C')
 	{
@@ -30,6 +36,7 @@ void CTempmoniter :: Moniter_Convert()
 
          CMainController objController( m_fValue, m_szState );
 	 objController.Controller_Tempwrite();
+	 return m_fValue;
 	
 }
 /* Thread function that is joined from the Moniter_Update function*/

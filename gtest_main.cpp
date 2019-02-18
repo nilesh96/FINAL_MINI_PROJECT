@@ -1,6 +1,6 @@
 #include<iostream>
 #include<gtest/gtest.h>
-#include"class.h"
+#include"tempmoniter.h"
 
 int main (int argc, char ** argv)
 {

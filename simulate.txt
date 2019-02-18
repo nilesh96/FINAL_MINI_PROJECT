@@ -1,0 +1,10 @@
+Temperature=132.8f		AC=warm
+Temperature=86f		AC=Medium
+Temperature=122f		AC=warm
+Temperature=132.8f		AC=warm
+Temperature=86f		AC=Medium
+Temperature=122f		AC=warm
+Temperature=68f		Temperature=68f		Temperature=68f		Temperature=68f		Temperature=20c		Temperature=68f		Temperature=20c		Temperature=68f		Temperature=20c		Temperature=20d		Temperature=20d		Temperature=68f		Temperature=20c		Temperature=35.5556c		Temperature=-17.7778c		Temperature=68f		Temperature=20c		Temperature=35.5556c		Temperature=-17.7778c		Temperature=68f		Temperature=20c		Temperature=35.5556c		Temperature=-17.7778c		Temperature=68f		Temperature=20c		Temperature=35.5556c		Temperature=-17.7778c		Temperature=68f		Temperature=20c		Temperature=35.5556c		Temperature=-17.7778c		Temperature=132.8f		AC=warm
+Temperature=86f		AC=Medium
+Temperature=122f		AC=warm
+Temperature=68f		Temperature=20c		Temperature=35.5556c		Temperature=-17.7778c		Temperature=68f		Temperature=20c		Temperature=35.5556c		Temperature=-17.7778c		Temperature=68f		Temperature=20c		Temperature=35.5556c		Temperature=-17.7778c		Temperature=68f		Temperature=20c		Temperature=35.5556c		Temperature=-17.7778c		

@@ -26,7 +26,7 @@ class CTempSensor:public ISubject
      int  Temp_Attach(IObserver *) override;
      void Temp_Detach(IObserver *) override;
      void Temp_Notify ( void ) override;
-     void Temp_Get_Data(void);
+     bool Temp_Get_Data( void );
      void Temp_Display_Data( void );
      void Temp_Set_Data( void );
 };

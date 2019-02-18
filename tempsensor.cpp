@@ -7,13 +7,13 @@
 #include"tempsensor.h"
 #include<algorithm>
 /*getting all the data from the file and store in the vector*/
-void CTempSensor :: Temp_Get_Data()
+bool CTempSensor :: Temp_Get_Data()
 {
     ifstream InStream("file.txt");
     if( !InStream )
      {
       cout << "file does not exits" << endl;
-      exit(0);
+      return false;
      }
      else
      {
@@ -21,7 +21,7 @@ void CTempSensor :: Temp_Get_Data()
      }
      string strLine;
      stringstream ssDivide;
-     while( getline ( InStream,strLine))
+      while( getline ( InStream,strLine))
      {
        ssDivide.clear();
        ssDivide.str(strLine);
@@ -35,6 +35,7 @@ void CTempSensor :: Temp_Get_Data()
        }
     cout << "Data is successfully copied in the data member" << endl; 
     InStream.close();
+    return true;
 }
 
 /*for display the data of the vector or file*/

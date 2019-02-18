@@ -54,7 +54,7 @@ void * CAcmoniter::Moniter_Thread( void *p )
     ptr->Moniter_Check();
     return nullptr;
 }
-
+/*Function for moniter changes if any changes comes to the temperature value */
 void CAcmoniter:: Moniter_Update(float temp , char state)
 {
     cout << "In acmoniter class client m_nId =" << m_nId << endl;
